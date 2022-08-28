@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { atom, selector, useRecoilValue, useRecoilValueLoadable } from 'recoil';
 
@@ -13,7 +13,7 @@ type UserType = {
 export const useSampleQuery = () => {
   const router = useRouter();
   const getUser = async () => {
-    const { data } = await axios.get<UserType>('https://jsonplaceholder.typicode.com/todos/1');
+    const { data } = await axios.get<UserType>('https://j/10000000');
 
     return data;
   };
@@ -21,8 +21,9 @@ export const useSampleQuery = () => {
   return useQuery({
     queryKey: ['UserType'],
     queryFn: getUser,
-    onError: async (err: any) => {
-      if (err.response.status === 401 || err.response.status === 403) await router.push('/');
+    onError: async (err: AxiosError) => {
+      console.log(err);
+      if (err.response?.status === 401 || err.response?.status === 403) await router.push('/');
     },
   });
 };
