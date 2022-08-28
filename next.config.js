@@ -10,7 +10,7 @@ const nextConfig = withInterceptStdout(
     // ignoreDuringBuilds: true,
     // staticPageGenerationTimeout: 1000
   },
-  (text) => (text.includes('Duplicate atom key') ? '' : text),
+  (text) => (text.includes('Duplicate atom key') ? '' : text)
 );
 
 module.exports = nextConfig;

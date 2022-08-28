@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 // import { useAddTodo } from './useAddTodo';
 import { todoState } from './features/todoAtom';
 
-
 type FormValue = {
   todo: string;
 };

@@ -41,5 +41,7 @@ module.exports = {
     'import/no-cycle': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'warn',
+    curly: 'off',
   },
 };

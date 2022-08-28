@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 // import { useAddTodo } from './useAddTodo';
 // import { todoState } from './features/todoAtom';
 import { userInfo } from './features/sampleSelector';
-
+import { useSampleQuery } from './features/useSampleQuery';
 
 type FormValue = {
   todo: string;
@@ -13,35 +13,30 @@ type FormValue = {
 export const Sample: FC = () => {
   // useEffect(() => {
   //   const user = useRecoilValueLoadable(userInfo);
-  // },[]) 
+  // },[])
 
   // const [count, setCount] = useState(initialState)
 
-  const user = useRecoilValueLoadable(userInfo);
+  const user = useSampleQuery();
   console.log(user);
 
-  if(user.state === 'loading') {
+  if (user.isLoading) {
     return (
       <div>
         <span>Loadin.</span>
       </div>
-    )
+    );
   }
 
   // if(user.state === 'hasError') {
   //   return (<>err</>)
   // }
 
-  // return (
-  //   <>
-  //       ID:{user.contents.id}
-  //       ユーザID:{user.contents.userId}
-  //       タイトル:{user.contents.title}
-  //   </>
-  // );
   return (
     <>
-aas
+        ID:{user?.data?.id}
+        ユーザID:{user.data?.userId}
+        タイトル:{user.data?.title}
     </>
   );
 };
