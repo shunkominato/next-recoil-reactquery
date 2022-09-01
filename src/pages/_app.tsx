@@ -3,6 +3,9 @@ import '../styles/globals.css';
 import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import apiClient from '@/util/apiClient';
+import { useCsrfToken } from './useCsrfToken';
 // import { store } from '../app/store';
 
 const queryClient = new QueryClient({
@@ -15,6 +18,7 @@ const queryClient = new QueryClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useCsrfToken()
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>

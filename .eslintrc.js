@@ -38,6 +38,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
     'import/no-cycle': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
