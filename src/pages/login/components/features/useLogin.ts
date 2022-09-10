@@ -18,11 +18,11 @@ const loginApi = async ({ email, password }: { email: string; password: string }
 
 export const useLogin = () => {
   const [user, setUser] = useRecoilState(userState);
-  const onSuccessLogin = (data: UserType) => {
-    console.log({ data });
-    // setUser(data);
-  };
   const router = useRouter();
+  const onSuccessLogin = async (data: UserType) => {
+    console.log({ data });
+    await router.push('/todo');
+  };
 
   const { mutate, isLoading } = useMutation(loginApi, {
     onSuccess: onSuccessLogin,
