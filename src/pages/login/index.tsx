@@ -1,10 +1,9 @@
 import { NextPage } from 'next';
-// import { FixedLayout } from "src/layout";
+import { Layout } from "src/layout/Layout";
 import { Login } from './components/Login';
 
 const LoginPage: NextPage = () => {
-  return <Login />;
+  return <Layout title='ddd'><Login /></Layout>;
 };
 
-// AboutPage.getLayout = FixedLayout;
 export default LoginPage;

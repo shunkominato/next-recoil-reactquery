@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import apiClient from '@/util/apiClient';
 import { useCsrfToken } from './useCsrfToken';
 // import { store } from '../app/store';
+// import 'tailwindcss/tailwindcss'
 
 const queryClient = new QueryClient({
   defaultOptions: {
