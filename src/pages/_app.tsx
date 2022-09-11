@@ -2,6 +2,7 @@ import '../styles/globals.css';
 // import { Provider } from 'react-redux';
 import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
+import { MantineProvider } from '@mantine/core'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import apiClient from '@/util/apiClient';
@@ -23,7 +24,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
-        <Component {...pageProps} />
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme: 'dark',
+            fontFamily: 'Verdana, sans-serif',
+          }}
+        >
+          <Component {...pageProps} />
+        </MantineProvider>
       </RecoilRoot>
     </QueryClientProvider>
   );
