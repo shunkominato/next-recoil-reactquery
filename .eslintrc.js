@@ -43,6 +43,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'warn',
+    '@typescript-eslint/naming-convention': 'warn',
     curly: 'off',
   },
 };
