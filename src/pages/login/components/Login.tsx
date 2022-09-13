@@ -1,8 +1,9 @@
 import { FC, useCallback } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, yupResolver } from '@mantine/form'
+import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { useLogin } from './features/useLogin';
 import { Form, validationSchema } from './features/validation';
+
 // import { useAddTodo } from './useAddTodo';
 // import { todoState } from './features/todoAtom';
 
@@ -12,14 +13,13 @@ export type LoginFormTypes = {
 };
 
 export const Login: FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<Form>({
-    defaultValues: {
+  const form = useForm<Form>({
+    initialValues: {
       email: '',
       password: '',
     },
-    criteriaMode: 'all',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    resolver: yupResolver(validationSchema),
+    validate: yupResolver(validationSchema),
+    validateInputOnChange: true,
   });
 
   const { login, isLoading } = useLogin();
@@ -31,11 +31,29 @@ export const Login: FC = () => {
   if (isLoading) return <>Lodding</>
 
   return (
-    <form onSubmit={handleSubmit(handleLogin)}>
-        <input {...register('email') } />
-        <span>{ errors.email?.message }</span>
-        <input {...register('password') } />
-        <input type="submit" />
+    <form onSubmit={form.onSubmit(handleLogin)}>
+        <TextInput
+          mt="md"
+          id="email"
+          label="Email*"
+          placeholder="example@gmail.com"
+          {...form.getInputProps('email')}
+        />
+        {/* <span>{ errors.email?.message }</span> */}
+        <PasswordInput
+          mt="md"
+          id="password"
+          placeholder="password"
+          label="Password*"
+          description="Must be min 5 char"
+          {...form.getInputProps('password')}
+        />
+          <Button
+            color="cyan"
+            type="submit"
+          >
+            Login
+          </Button>
       </form>
   );
 };
