@@ -10,7 +10,7 @@
     "lint:fix": "eslint --fix --ext .js,.ts,.jsx,.tsx .",
     "format": "prettier --write './**/*.{js,ts,jsx,tsx}'",
     "test": "jest",
-    "storybook": "start-storybook -p 6006",
+    "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

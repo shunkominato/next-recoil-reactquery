@@ -13,4 +13,11 @@ const nextConfig = withInterceptStdout(
   (text) => (text.includes('Duplicate atom key') ? '' : text)
 );
 
-module.exports = nextConfig;
+const urlPrefix = '/';
+module.exports = {
+  ...nextConfig,
+  // assetPrefix: urlPrefix,
+  // basePath: urlPrefix,
+  // trailingSlash: true,
+  publicRuntimeConfig: { urlPrefix },
+};
