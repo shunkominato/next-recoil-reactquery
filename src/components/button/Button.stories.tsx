@@ -5,4 +5,5 @@ export default {
   component: Button,
 };
 
-export const Sample1 = () => <Button label="button" onClick={() => {}} />;
+export const basicButton = () => <Button label="button" onClick={() => {}} />;
+export const primaryButton = () => <Button label="yellow" color='yellow' onClick={() => {}} />;
