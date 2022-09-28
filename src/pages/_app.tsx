@@ -6,7 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import apiClient from '@/util/apiClient';
-import { useCsrfToken } from './useCsrfToken';
+import { useCsrfToken } from '../hooks/useCsrfToken';
 // import { store } from '../app/store';
 // import 'tailwindcss/tailwindcss'
 

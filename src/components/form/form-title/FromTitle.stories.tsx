@@ -5,7 +5,7 @@ export default {
   component: FormTitle,
 };
 
-export const formTitle = () => <FormTitle label="button" onClick={() => {}} />;
+export const formTitle = () => <FormTitle label="title" />;
 // export const primaryButton = () => (
 //   <FormTitle label="yellow" color="yellow" onClick={() => {}} />
 // );

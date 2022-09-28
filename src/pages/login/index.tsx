@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { Layout } from "src/layout/Layout";
-import { Login } from './components/Login';
+import { Login } from '../../pages-component/components/Login';
 
 const LoginPage: NextPage = () => {
   return <Layout title='ddd'><Login /></Layout>;

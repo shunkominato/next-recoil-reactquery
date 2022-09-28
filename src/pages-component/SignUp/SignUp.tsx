@@ -1,5 +1,6 @@
 import { FC, useCallback } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
+import { useMediaQuery } from '@mantine/hooks';
 import {
   Container,
   createStyles,
@@ -13,7 +14,6 @@ import { FormDescription } from '@/components/form/form-description/FormDescript
 // import { TextInput } from '@/components/form/TextInput/TextInput';
 import { useLogin } from './features/useLogin';
 import { Form, validationSchema } from './features/validation';
-import { useMediaQuery } from '@mantine/hooks';
 
 // import { useAddTodo } from './useAddTodo';
 // import { todoState } from './features/todoAtom';

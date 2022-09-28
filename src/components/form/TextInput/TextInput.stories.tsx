@@ -1,11 +1,19 @@
-import { Button } from './TextInput';
+import { TextInput } from './TextInput';
 
 export default {
   title: 'Components/Button',
-  component: Button,
+  component: TextInput,
 };
 
-export const basicButton = () => <Button label="button" onClick={() => {}} />;
-export const primaryButton = () => (
-  <Button label="yellow" color="yellow" onClick={() => {}} />
+export const basicButton = () => (
+  <TextInput
+    mt="xs"
+    id="email"
+    label="メールアドレス"
+    placeholder="gmail"
+    form={{}}
+  />
 );
+// export const primaryButton = () => (
+//   <Button label="yellow" color="yellow" onClick={() => {}} />
+// );

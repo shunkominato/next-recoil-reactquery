@@ -1,11 +1,11 @@
-import { FormTitle } from './FormDescription';
+import { FormDescription } from './FormDescription';
 
 export default {
   title: 'Components/Form/FormButton',
-  component: FormTitle,
+  component: FormDescription,
 };
 
-export const formTitle = () => <FormTitle label="button" onClick={() => {}} />;
+export const formDescription = () => <FormDescription>aa</FormDescription>;
 // export const primaryButton = () => (
 //   <FormTitle label="yellow" color="yellow" onClick={() => {}} />
 // );
