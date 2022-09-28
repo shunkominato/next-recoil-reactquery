@@ -2,7 +2,7 @@ import '../styles/globals.css';
 // import { Provider } from 'react-redux';
 import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import apiClient from '@/util/apiClient';
@@ -20,21 +20,39 @@ const queryClient = new QueryClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useCsrfToken()
+  useCsrfToken();
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            colorScheme: 'dark',
-            fontFamily: 'Verdana, sans-serif',
-          }}
-        >
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          fontFamily: 'Verdana, sans-serif',
+          breakpoints: {
+            xs: 500,
+            sm: 800,
+          },
+          colors: {
+            'FA-blue': [
+              '#F0BBDD',
+              '#ED9BCF',
+              '#EC7CC3',
+              '#ED5DB8',
+              '#F13EAF',
+              '#F71FA7',
+              '#144CA1',
+              '#E00890',
+              '#C50E82',
+              '#AD1374',
+            ],
+          },
+          primaryColor: 'FA-blue',
+        }}
+      >
+        <RecoilRoot>
           <Component {...pageProps} />
-        </MantineProvider>
-      </RecoilRoot>
+        </RecoilRoot>
+      </MantineProvider>
     </QueryClientProvider>
   );
 }

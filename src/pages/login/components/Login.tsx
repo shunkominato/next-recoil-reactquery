@@ -1,6 +1,7 @@
 import { FC, useCallback } from 'react';
-import { useForm, yupResolver } from '@mantine/form'
-import { Button, PasswordInput, TextInput } from '@mantine/core';
+import { useForm, zodResolver } from '@mantine/form'
+import { PasswordInput, TextInput } from '@mantine/core';
+import { Button } from '@/components/button/Button';
 import { useLogin } from './features/useLogin';
 import { Form, validationSchema } from './features/validation';
 
@@ -18,7 +19,7 @@ export const Login: FC = () => {
       email: '',
       password: '',
     },
-    validate: yupResolver(validationSchema),
+    validate: zodResolver(validationSchema),
     validateInputOnChange: true,
   });
 
@@ -49,11 +50,10 @@ export const Login: FC = () => {
           {...form.getInputProps('password')}
         />
           <Button
-            color="cyan"
+            // color="cyan"
             type="submit"
-          >
-            Login
-          </Button>
+            label='Login'
+          />
       </form>
   );
 };
