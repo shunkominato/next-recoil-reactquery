@@ -27,11 +27,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          fontFamily: 'Verdana, sans-serif',
-          breakpoints: {
-            xs: 500,
-            sm: 800,
-          },
+          fontFamily: 'Noto Sans JP',
+          // breakpoints: {
+          //   xs: 500,
+          //   sm: 800,
+          // },
           colors: {
             'FA-blue': [
               '#F0BBDD',
