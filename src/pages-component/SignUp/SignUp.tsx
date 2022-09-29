@@ -49,7 +49,8 @@ export const SignUp: FC = () => {
     validate: zodResolver(validationSchema),
     validateInputOnChange: true,
   });
-  console.log(form.errors);
+  console.log(form.values.email);
+  console.log(form.errors.email);
 
   const { login, isLoading } = useLogin();
 
@@ -91,6 +92,7 @@ export const SignUp: FC = () => {
           size="xl"
           fullWidth
           styles={buttonStyles}
+          disabled={!!form.errors.email || !form.values.email}
         />
       </form>
     </Container>

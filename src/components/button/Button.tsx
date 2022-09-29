@@ -10,6 +10,7 @@ interface Props {
   size?: 'xs' | 'md' | 'lg' | 'xl';
   type?: 'reset' | 'button' | 'submit';
   styles?: Record<'root', string | CSSObject>;
+  disabled?: boolean;
   onClick?: () => void;
 }
 export const Button: FC<Props> = ({
@@ -22,6 +23,7 @@ export const Button: FC<Props> = ({
   size,
   type = 'submit',
   styles,
+  disabled = false,
 }) => {
   return (
     <MButton
@@ -33,6 +35,7 @@ export const Button: FC<Props> = ({
       size={size}
       onClick={onClick}
       styles={styles as Record<'root', CSSObject>}
+      disabled={disabled}
     >
       {label}
     </MButton>
