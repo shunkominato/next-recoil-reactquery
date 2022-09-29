@@ -25,7 +25,7 @@ export type LoginFormTypes = {
 
 const buttonStyles = {
   root: {
-    marginTop: 24,
+    marginTop: 48,
   },
 };
 
