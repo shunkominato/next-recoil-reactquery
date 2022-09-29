@@ -20,7 +20,7 @@ import { Form, validationSchema } from './features/validation';
 
 export type LoginFormTypes = {
   email: string;
-  password: string;
+  // password: string;
 };
 
 const buttonStyles = {
@@ -40,19 +40,21 @@ const inputStyles = {
 
 export const SignUp: FC = () => {
   const isMobile = useMediaQuery('(min-width: 500px)');
+  console.log(isMobile);
   const form = useForm<Form>({
     initialValues: {
       email: '',
-      password: '',
+      // password: '',
     },
     validate: zodResolver(validationSchema),
     validateInputOnChange: true,
   });
+  console.log(form.errors);
 
   const { login, isLoading } = useLogin();
 
   const handleLogin = useCallback((params: LoginFormTypes) => {
-    login({ email: params.email, password: params.password });
+    login({ email: params.email, password: 'ss' });
   }, []);
 
   if (isLoading) return <>Lodding</>;
@@ -74,7 +76,7 @@ export const SignUp: FC = () => {
           // form={form}
         />
         {/* <span>{ errors.email?.message }</span> */}
-        <PasswordInput
+        {/* <PasswordInput
           mt="md"
           id="password"
           placeholder="password"
@@ -82,7 +84,7 @@ export const SignUp: FC = () => {
           radius="xs"
           styles={inputStyles}
           {...form.getInputProps('password')}
-        />
+        /> */}
         <Button
           type="submit"
           label="登録"
@@ -90,15 +92,6 @@ export const SignUp: FC = () => {
           fullWidth
           styles={buttonStyles}
         />
-        {isMobile ? (
-          <Button
-            type="submit"
-            label="登録"
-            size="xl"
-            fullWidth
-            styles={buttonStyles}
-          />
-        ) : null}
       </form>
     </Container>
   );
