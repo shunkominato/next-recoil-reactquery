@@ -2,22 +2,35 @@ import { useRouter } from 'next/router';
 import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
-import apiClient from '@/util/apiClient';
+import apiClient from '@/lib/apiClient';
 import { userState } from '@/features/user/userAtom';
+import { useCallback } from 'react';
+import { useSetAtom } from 'jotai';
+// import { LoginFormTypes } from './SignUp';
 
 type UserType = {
   userId: number;
   name: string;
 };
 
-const loginApi = async ({ email, password }: { email: string; password: string }) => {
-  const { data } = await apiClient.post<UserType>({ uri: `/auth/login`, body: { email, password } });
-  console.log('loginapi');
+const loginApi = async ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
+  const { data } = await apiClient.post<UserType>({
+    uri: `/auth/login`,
+    body: { email, password },
+  });
   return data;
 };
 
-export const useLogin = () => {
-  const [user, setUser] = useRecoilState(userState);
+export const useLogin = (): {
+  isLoading: boolean;
+} => {
+  const AA = useSetAtom(userState);
   const router = useRouter();
   const onSuccessLogin = async (data: UserType) => {
     console.log({ data });
@@ -28,7 +41,8 @@ export const useLogin = () => {
     onSuccess: onSuccessLogin,
     onError: async (err: AxiosError) => {
       console.log(err);
-      if (err.response?.status === 401 || err.response?.status === 403) await router.push('/');
+      if (err.response?.status === 401 || err.response?.status === 403)
+        await router.push('/');
     },
   });
 
@@ -39,5 +53,9 @@ export const useLogin = () => {
     });
   };
 
-  return { login, isLoading };
+  // const handleLogin = useCallback((params: LoginFormTypes) => {
+  //   login({ email: params.email, password: 'ss' });
+  // }, []);
+
+  return { isLoading };
 };

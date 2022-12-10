@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import apiClient from '@/util/apiClient';
+import apiClient from '@/lib/apiClient';
 
 export interface TodoState {
   todo: string[];

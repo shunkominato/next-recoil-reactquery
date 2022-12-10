@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm, zodResolver } from '@mantine/form';
 import { useMediaQuery } from '@mantine/hooks';
 import {
@@ -12,16 +13,17 @@ import { Button } from '@/components/button/Button';
 import { FormTitle } from '@/components/form/form-title/FormTitle';
 import { FormDescription } from '@/components/form/form-description/FormDescription';
 // import { TextInput } from '@/components/form/TextInput/TextInput';
-import { useLogin } from './features/useLogin';
-import { Form, validationSchema } from './features/validation';
+import { useLogin } from './useLogin';
+import { SignUpFormTypes, validationSchema } from './validation';
+import { useSignUp } from './useSignUp';
 
 // import { useAddTodo } from './useAddTodo';
 // import { todoState } from './features/todoAtom';
 
-export type LoginFormTypes = {
-  email: string;
-  // password: string;
-};
+// export type SignUpFormTypes = {
+//   email: string;
+//   password: string;
+// };
 
 const buttonStyles = {
   root: {
@@ -40,33 +42,30 @@ const inputStyles = {
 };
 
 export const SignUp: FC = () => {
-  const isMobile = useMediaQuery('(min-width: 500px)');
-  console.log(isMobile);
-  const form = useForm<Form>({
+  const form = useForm<SignUpFormTypes>({
     initialValues: {
       email: '',
-      // password: '',
+      password: '',
     },
     validate: zodResolver(validationSchema),
     validateInputOnChange: true,
   });
-  console.log(form.values.email);
-  console.log(form.errors.email);
 
-  const { login, isLoading } = useLogin();
+  const { handleSignUp, isLoading, isError } = useSignUp();
 
-  const handleLogin = useCallback((params: LoginFormTypes) => {
-    login({ email: params.email, password: 'ss' });
-  }, []);
+  if (isError) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <></>;
+  }
 
   if (isLoading) return <>Lodding</>;
 
   return (
     <Container>
       <div className="text-center">
-        <FormTitle label="新規登録" />
+        <FormTitle label="新規ユーザー登録" />
       </div>
-      <form className="mt-6" onSubmit={form.onSubmit(handleLogin)}>
+      <form className="mt-6" onSubmit={form.onSubmit(handleSignUp)}>
         <TextInput
           mt="md"
           id="email"
@@ -78,7 +77,7 @@ export const SignUp: FC = () => {
           // form={form}
         />
         {/* <span>{ errors.email?.message }</span> */}
-        {/* <PasswordInput
+        <PasswordInput
           mt="md"
           id="password"
           placeholder="password"
@@ -86,7 +85,7 @@ export const SignUp: FC = () => {
           radius="xs"
           styles={inputStyles}
           {...form.getInputProps('password')}
-        /> */}
+        />
         <Button
           type="submit"
           label="登録"

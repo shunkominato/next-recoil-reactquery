@@ -1,4 +1,4 @@
-import apiClient from '@/util/apiClient';
+import apiClient from '@/lib/apiClient';
 import axios from 'axios';
 import { useEffect } from 'react';
 

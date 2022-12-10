@@ -2,8 +2,9 @@ import { useRouter } from 'next/router';
 import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
-import apiClient from '@/util/apiClient';
+import apiClient from '@/lib/apiClient';
 import { userState } from '@/features/user/userAtom';
+import { useAtom } from 'jotai';
 
 type UserType = {
   userId: number;
@@ -21,11 +22,12 @@ const loginApi = async ({
     uri: `/auth/login`,
     body: { email, password },
   });
+  console.log('loginapi');
   return data;
 };
 
 export const useLogin = () => {
-  const [user, setUser] = useRecoilState(userState);
+  const [user, setUser] = useAtom(userState);
   const router = useRouter();
   const onSuccessLogin = async (data: UserType) => {
     console.log({ data });

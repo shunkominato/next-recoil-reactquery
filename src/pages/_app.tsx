@@ -5,7 +5,8 @@ import type { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import apiClient from '@/util/apiClient';
+import apiClient from '@/lib/apiClient';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useCsrfToken } from '../hooks/useCsrfToken';
 // import { store } from '../app/store';
 // import 'tailwindcss/tailwindcss'
@@ -20,7 +21,7 @@ const queryClient = new QueryClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useCsrfToken();
+  // useCsrfToken();
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider
@@ -53,6 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </RecoilRoot>
       </MantineProvider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

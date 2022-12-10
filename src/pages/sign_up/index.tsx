@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { Layout } from 'src/layout/Layout';
-import { SignUp } from '../../pages-component/SignUp/SignUp';
+import { SignUp } from '../../page-contents/SignUp/SignUp';
 
 const SignUpPage: NextPage = () => {
   return (
