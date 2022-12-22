@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import snakecaseKeys from 'snakecase-keys';
 
 class ApiClient {
   constructor() {
@@ -33,7 +34,7 @@ class ApiClient {
   }): Promise<AxiosResponse<T>> {
     this._setToken();
 
-    return axios.post(uri, body);
+    return axios.post(uri, body ? snakecaseKeys(body, { deep: true }) : body);
   }
 }
 

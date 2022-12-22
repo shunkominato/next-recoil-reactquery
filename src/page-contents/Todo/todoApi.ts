@@ -43,8 +43,8 @@ export const addTodoApi = async ({ todo }: { todo: AddTodo }) => {
     uri: `/api/v1/todos`,
     body: {
       todo: todo.todo,
-      user_id: todo.userId,
-      todo_statuses_id: 1,
+      userId: todo.userId,
+      todoStatusesId: 1,
     },
   });
   return data;
