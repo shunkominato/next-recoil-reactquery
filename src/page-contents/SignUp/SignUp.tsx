@@ -1,29 +1,10 @@
 import { FC, useCallback } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm, zodResolver } from '@mantine/form';
-import { useMediaQuery } from '@mantine/hooks';
-import {
-  Container,
-  createStyles,
-  CSSObject,
-  PasswordInput,
-  TextInput,
-} from '@mantine/core';
+import { Container, PasswordInput, TextInput } from '@mantine/core';
 import { Button } from '@/components/button/Button';
 import { FormTitle } from '@/components/form/form-title/FormTitle';
-import { FormDescription } from '@/components/form/form-description/FormDescription';
-// import { TextInput } from '@/components/form/TextInput/TextInput';
-import { useLogin } from './useLogin';
 import { SignUpFormTypes, validationSchema } from './validation';
 import { useSignUp } from './useSignUp';
-
-// import { useAddTodo } from './useAddTodo';
-// import { todoState } from './features/todoAtom';
-
-// export type SignUpFormTypes = {
-//   email: string;
-//   password: string;
-// };
 
 const buttonStyles = {
   root: {
@@ -58,8 +39,6 @@ export const SignUp: FC = () => {
     return <></>;
   }
 
-  if (isLoading) return <>Lodding</>;
-
   return (
     <Container>
       <div className="text-center">
@@ -93,6 +72,7 @@ export const SignUp: FC = () => {
           fullWidth
           styles={buttonStyles}
           disabled={!!form.errors.email || !form.values.email}
+          loading={isLoading}
         />
       </form>
     </Container>

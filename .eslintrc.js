@@ -45,6 +45,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'warn',
     '@typescript-eslint/naming-convention': 'warn',
     'react/require-default-props': 'off',
+    'no-alert': 'off',
     curly: 'off',
   },
 };

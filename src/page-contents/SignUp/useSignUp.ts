@@ -14,7 +14,7 @@ export const useSignUp = () => {
   const queryClient = useQueryClient();
   // const [user, setUser] = useRecoilState();
   const router = useRouter();
-  const onSuccessLogin = (
+  const onSuccessLogin = async (
     data: ISignUpApi | void,
     variables: SignUpApiType,
     context: []
@@ -25,7 +25,7 @@ export const useSignUp = () => {
     queryClient.setQueriesData(['user'], data);
 
     // return data;
-    // await router.push('/todo');
+    await router.push('/todo');
   };
 
   const { mutate, isLoading, isError } = useMutationClient<

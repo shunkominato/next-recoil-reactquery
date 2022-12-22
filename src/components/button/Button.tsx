@@ -11,6 +11,7 @@ interface Props {
   type?: 'reset' | 'button' | 'submit';
   styles?: Record<'root', string | CSSObject>;
   disabled?: boolean;
+  loading?: boolean;
   onClick?: () => void;
 }
 export const Button: FC<Props> = ({
@@ -24,6 +25,7 @@ export const Button: FC<Props> = ({
   type = 'submit',
   styles,
   disabled = false,
+  loading = false,
 }) => {
   return (
     <MButton
@@ -36,6 +38,7 @@ export const Button: FC<Props> = ({
       onClick={onClick}
       styles={styles as Record<'root', CSSObject>}
       disabled={disabled}
+      loading={loading}
     >
       {label}
     </MButton>
