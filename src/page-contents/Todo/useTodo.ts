@@ -1,16 +1,7 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import router from 'next/router';
 import { AxiosError } from 'axios';
-import { useCallback } from 'react';
-import { addTodoApi, todoListApi, todoStatusApi } from './todoApi';
-import { TodoFormTypes } from './validation';
-
-const onSuccessAddTodo = () => {};
-
-const onErrorAddTodo = (err: AxiosError) => {
-  console.log(err);
-  window.alert('add Error');
-};
+import { todoListApi, todoStatusApi } from './todoApi';
 
 export const useTodos = () => {
   const useTodoQuery = () => {
@@ -44,30 +35,9 @@ export const useTodos = () => {
       },
     });
   };
-  const queryClient = useQueryClient();
-
-  const { mutate, isLoading, isError } = useMutation(addTodoApi, {
-    onError: onErrorAddTodo,
-    onSuccess: (data) => {
-      console.log(data);
-      queryClient.invalidateQueries(['todoList']);
-    },
-  });
-
-  const useAddTodo = useCallback((formValue: TodoFormTypes) => {
-    mutate({
-      todo: {
-        todo: formValue.todo,
-        userId: 1,
-      },
-    });
-  }, []);
 
   return {
     useTodoQuery,
     useTodoStatusQuery,
-    useAddTodo,
-    isLoading,
-    isError,
   };
 };

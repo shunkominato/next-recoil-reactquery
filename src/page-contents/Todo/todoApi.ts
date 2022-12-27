@@ -32,20 +32,3 @@ export const todoStatusApi = async () => {
   });
   return data;
 };
-
-export type AddTodo = {
-  todo: string;
-  userId: number;
-};
-
-export const addTodoApi = async ({ todo }: { todo: AddTodo }) => {
-  const { data } = await apiClient.post<ITodoStatuses>({
-    uri: `/api/v1/todos`,
-    body: {
-      todo: todo.todo,
-      userId: todo.userId,
-      todoStatusesId: 1,
-    },
-  });
-  return data;
-};

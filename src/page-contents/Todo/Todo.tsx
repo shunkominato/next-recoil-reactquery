@@ -1,19 +1,12 @@
 import { Radio, Table, TextInput } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { FC } from 'react';
-import { inputStyles } from './style';
 import { useTodos } from './useTodo';
-import { TodoFormTypes, validationSchema } from './validation';
+import { TodoFormTypes, validationSchema } from './todoForm/validation';
+import { TodoForm } from './todoForm/TodoForm';
 
 export const Todo: FC = () => {
-  const form = useForm<TodoFormTypes>({
-    initialValues: {
-      todo: '',
-    },
-    validate: zodResolver(validationSchema),
-    validateInputOnChange: true,
-  });
-  const { useTodoQuery, useTodoStatusQuery, useAddTodo } = useTodos();
+  const { useTodoQuery, useTodoStatusQuery } = useTodos();
   const { data } = useTodoQuery();
   const { data: todoStatus, isLoading } = useTodoStatusQuery();
 
@@ -48,18 +41,7 @@ export const Todo: FC = () => {
         </tbody>
       </Table>
       <h2>Todo追加</h2>
-      <form className="mt-6" onSubmit={form.onSubmit(useAddTodo)}>
-        <div>
-          <TextInput
-            mt="md"
-            id="todo"
-            label="todo *"
-            radius="xs"
-            styles={inputStyles}
-            {...form.getInputProps('todo')}
-          />
-        </div>
-      </form>
+      <TodoForm/>
     </>
   );
 };
