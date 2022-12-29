@@ -20,7 +20,7 @@ export const useAddTodos = () => {
     },
   });
 
-  const useAddTodo = useCallback((formValue: TodoFormTypes) => {
+  const handleSubmit = useCallback((formValue: TodoFormTypes) => {
     mutate({
       todo: {
         todo: formValue.todo,
@@ -30,7 +30,7 @@ export const useAddTodos = () => {
   }, []);
 
   return {
-    useAddTodo,
+    handleSubmit,
     isLoading,
     isError,
   };
