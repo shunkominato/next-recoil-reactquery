@@ -1,12 +1,6 @@
 import { useRouter } from 'next/router';
-import { AxiosError } from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
-import apiClient from '@/lib/apiClient';
-import { userState } from '@/features/user/userAtom';
-import { useMutationClient } from '@/lib/useFetchClient';
 import { useCallback } from 'react';
-// import { LoginFormTypes } from './SignUp';
 import { SignUpFormTypes } from './validation';
 import { signUpApi, SignUpApiType, ISignUpApi } from './signupApi';
 
@@ -28,29 +22,22 @@ export const useSignUp = () => {
     await router.push('/todo');
   };
 
-  const { mutate, isLoading, isError } = useMutationClient<
-    SignUpApiType,
-    ISignUpApi,
-    []
-  >(signUpApi);
+  const { mutate, isLoading, isError } = useMutation(signUpApi, {
+    onSuccess: async (data) => {
+      queryClient.setQueriesData(['user'], data);
 
-  const signUp = ({ email, password }: { email: string; password: string }) => {
-    mutate(
-      {
-        email,
-        password,
-      },
-      {
-        onSuccess: onSuccessLogin,
-        onError: () => {
-          window.alert('kkk');
-        },
-      }
-    );
-  };
+      await router.push('/todo');
+    },
+    onError: () => {
+      window.alert('kkk');
+    },
+  });
 
-  const handleSignUp = useCallback((params: SignUpFormTypes) => {
-    signUp({ email: params.email, password: params.password });
+  const handleSignUp = useCallback((signUpFormValue: SignUpFormTypes) => {
+    mutate({
+      email: signUpFormValue.email,
+      password: signUpFormValue.password,
+    });
   }, []);
 
   return { handleSignUp, isLoading, isError };
