@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
 import apiClient from '@/lib/apiClient';
-import { userState } from '@/features/user/userAtom';
+import { userState } from '@/stores/user/userAtom';
 import { useCallback } from 'react';
 import { useSetAtom } from 'jotai';
 // import { LoginFormTypes } from './SignUp';

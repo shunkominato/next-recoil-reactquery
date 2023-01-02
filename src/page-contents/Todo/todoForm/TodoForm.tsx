@@ -1,4 +1,4 @@
-import { Button } from '@/components/button/Button';
+import { Button } from '@/components/ui/button/Button';
 import { TextInput } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { FC } from 'react';

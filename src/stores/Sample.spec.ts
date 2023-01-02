@@ -1,5 +1,5 @@
 // Sample.ts squareのテストコード
-import { square } from '@/features/sample';
+import { square } from '@/stores/sample';
 
 describe('Sample.ts Functions TestCases', () => {
   it('should return the squared value', () => {

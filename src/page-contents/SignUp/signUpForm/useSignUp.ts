@@ -6,7 +6,6 @@ import { signUpApi, SignUpApiType, ISignUpApi } from './signupApi';
 
 export const useSignUp = () => {
   const queryClient = useQueryClient();
-  // const [user, setUser] = useRecoilState();
   const router = useRouter();
   const onSuccessLogin = async (
     data: ISignUpApi | void,
@@ -18,7 +17,6 @@ export const useSignUp = () => {
     console.log({ context });
     queryClient.setQueriesData(['user'], data);
 
-    // return data;
     await router.push('/todo');
   };
 
