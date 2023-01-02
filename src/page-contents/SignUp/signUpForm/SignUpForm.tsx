@@ -2,10 +2,9 @@ import { FC, useCallback } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
 import { Container, PasswordInput } from '@mantine/core';
 import { Button } from '@/components/ui/button/Button';
-import { FormTitle } from '@/components/form/form-title/FormTitle';
 import { SignUpFormTypes, validationSchema } from './validation';
 import { useSignUp } from './useSignUp';
-import { TextInput } from '@/components/TextInput/TextInput';
+import { TextInput } from '@/components/ui/TextInput/TextInput';
 
 const buttonStyles = {
   root: {

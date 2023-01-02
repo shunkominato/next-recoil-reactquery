@@ -1,15 +1,8 @@
-import '../styles/globals.css';
-// import { Provider } from 'react-redux';
-import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import apiClient from '@/lib/apiClient';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { useCsrfToken } from '../hooks/useCsrfToken';
-// import { store } from '../app/store';
-// import 'tailwindcss/tailwindcss'
+import '../styles/globals.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,9 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           primaryColor: 'FA-blue',
         }}
       >
-        <RecoilRoot>
-          <Component {...pageProps} />
-        </RecoilRoot>
+        <Component {...pageProps} />
       </MantineProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>

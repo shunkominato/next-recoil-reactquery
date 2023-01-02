@@ -6,8 +6,6 @@ export interface UserState {
 }
 
 export const userState = atom({
-  // key: 'user',
-  // default: null,
   userId: 0,
   name: 'test',
 });
