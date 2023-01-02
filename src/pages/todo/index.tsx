@@ -1,4 +1,4 @@
-import { Todo } from '@/page-contents/Todo/Todo';
+import { Todo } from '@/page-contents/Todo';
 import { NextPage } from 'next';
 import { Layout } from 'src/layout/Layout';
 

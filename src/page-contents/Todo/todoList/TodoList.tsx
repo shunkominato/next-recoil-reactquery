@@ -1,6 +1,6 @@
 import { Radio } from '@mantine/core';
 import { FC } from 'react';
-import { ResultTable } from './resultTable/ResultTable';
+import { ResultTable } from './resultTable';
 import { useFetchTodoStatus } from './useFetchTodoStatus';
 
 export const TodoList: FC = () => {

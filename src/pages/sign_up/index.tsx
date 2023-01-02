@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { Layout } from 'src/layout/Layout';
-import { SignUp } from '../../page-contents/SignUp/SignUp';
+import { SignUp } from '../../page-contents/SignUp';
 
 const SignUpPage: NextPage = () => {
   return (
@@ -8,7 +8,6 @@ const SignUpPage: NextPage = () => {
       <SignUp />
     </Layout>
   );
-  // return <SignUp />;
 };
 
 export default SignUpPage;
