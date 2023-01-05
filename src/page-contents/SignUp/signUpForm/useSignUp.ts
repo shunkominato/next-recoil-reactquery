@@ -3,10 +3,15 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { SignUpFormTypes } from './validation';
 import { signUpApi, SignUpApiType, ISignUpApi } from './signupApi';
+import { errorHandler } from '@/util/errorHandler';
+import { AxiosError } from 'axios';
+import { userAtom } from '@/stores/user/userAtom';
+import { useSetAtom } from 'jotai';
 
 export const useSignUp = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
+  const setUser = useSetAtom(userAtom);
   const onSuccessLogin = async (
     data: ISignUpApi | void,
     variables: SignUpApiType,
@@ -22,12 +27,16 @@ export const useSignUp = () => {
 
   const { mutate, isLoading, isError } = useMutation(signUpApi, {
     onSuccess: async (data) => {
-      queryClient.setQueriesData(['user'], data);
+      console.log('data');
+      console.log(data.data);
+      console.log('data');
+      // queryClient.setQueriesData(['user'], data.data);
+      setUser(data.data);
 
       await router.push('/todo');
     },
-    onError: () => {
-      window.alert('kkk');
+    onError: (err: AxiosError) => {
+      errorHandler({ err });
     },
   });
 

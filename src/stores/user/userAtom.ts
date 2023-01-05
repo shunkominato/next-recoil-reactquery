@@ -5,7 +5,7 @@ export interface UserState {
   name: string;
 }
 
-export const userState = atom({
+export const userAtom = atom({
   userId: 0,
   name: 'test',
 });

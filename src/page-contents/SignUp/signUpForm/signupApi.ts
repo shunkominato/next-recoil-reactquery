@@ -6,8 +6,11 @@ export type SignUpApiType = {
 };
 
 export type ISignUpApi = {
-  userId: number;
-  name: string;
+  data: {
+    userId: number;
+    name: string;
+  };
+  status: string;
 };
 
 export const signUpApi = async ({ email, password }: SignUpApiType) => {

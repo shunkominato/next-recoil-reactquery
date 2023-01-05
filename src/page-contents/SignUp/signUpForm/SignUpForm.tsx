@@ -1,10 +1,10 @@
 import { FC, useCallback } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
 import { Container, PasswordInput } from '@mantine/core';
-import { Button } from '@/components/ui/button/Button';
+import { Button } from '@/components/ui/elements/button/Button';
 import { SignUpFormTypes, validationSchema } from './validation';
 import { useSignUp } from './useSignUp';
-import { TextInput } from '@/components/ui/TextInput/TextInput';
+import { TextInput } from '@/components/ui/elements/TextInput/TextInput';
 
 const buttonStyles = {
   root: {
@@ -53,7 +53,6 @@ export const SignUpForm: FC = () => {
         styles={inputStyles}
         form={form}
       />
-      {/* <span>{ errors.email?.message }</span> */}
       <PasswordInput
         mt="md"
         id="password"

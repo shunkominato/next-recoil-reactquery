@@ -1,7 +1,7 @@
 import { FC, useCallback } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
 import { PasswordInput, TextInput } from '@mantine/core';
-import { Button } from '@/components/ui/button/Button';
+import { Button } from '@/components/ui/elements/button/Button';
 import { useLogin } from './features/useLogin';
 import { Form, validationSchema } from './features/validation';
 

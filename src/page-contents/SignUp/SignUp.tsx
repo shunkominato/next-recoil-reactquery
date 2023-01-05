@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Container } from '@mantine/core';
-import { FormTitle } from '@/components/ui/form/form-title/FormTitle';
+import { FormTitle } from '@/components/ui/elements/form/form-title/FormTitle';
 import { SignUpForm } from './signUpForm/SignUpForm';
 
 export const SignUp: FC = () => {
