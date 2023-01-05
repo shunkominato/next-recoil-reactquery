@@ -1,18 +1,9 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
-import {
-  createStyles,
-  Header,
-  Menu,
-  Group,
-  Center,
-  Burger,
-  Container,
-} from '@mantine/core';
+import { createStyles, Header, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import * as defaultStyles from '@/styles/default.styles';
-// import { IconChevronDown } from '@tabler/icons';
 
 type Props = {
   title: string;
@@ -26,19 +17,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const Layout: FC<Props> = ({ children, title = 'FAクラフト' }) => {
+export const Layout: FC<Props> = ({ children, title = 'test' }) => {
   const { classes } = useStyles();
   return (
     <>
       <Header height={56} className={classes.header}>
         <Container>
           <span>
-            <Image
-              src="/logo/FAcraft.svg"
-              alt="FAcraft Logo"
-              width={120}
-              height={56}
-            />
+            {/* <Image src="/logo/" alt="Logo" width={120} height={56} /> */}
           </span>
         </Container>
       </Header>
