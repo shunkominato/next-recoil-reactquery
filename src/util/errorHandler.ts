@@ -8,7 +8,7 @@ export const errorHandler = ({
   err: AxiosError;
   alertMessage?: string;
 }) => {
-  if (err.response?.status === 401 || err.response?.status === 403) {
+  if (err.response?.status === 401) {
     window.alert(
       'ログイン状態が無効になりました。続けて操作する場合はログインをしなおしてください。'
     );
@@ -17,9 +17,7 @@ export const errorHandler = ({
   }
 
   if (err.message === 'Network Error') {
-    window.alert(
-      '通信がエラー発生しました。電波の良い場所で再度お試しください'
-    );
+    window.alert('通信エラー発生しました。電波の良い場所で再度お試しください');
     return;
   }
 
